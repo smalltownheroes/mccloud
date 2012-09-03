@@ -19,7 +19,8 @@ module Mccloud::Provider
           if name.start_with?(self.filter)
             unless self.filter==""
               name[self.filter]=""
-              printf "%-10s %-12s %-20s %-20s %-15s %-8s\n",name,vm.id, vm.public_ip_address, vm.private_ip_address,vm.flavor.name,vm.state
+              flavor = (vm.flavor == nil) ? 'm1.medium' : vm.flavor.name
+              printf "%-10s %-12s %-20s %-20s %-15s %-8s\n",name,vm.id, vm.public_ip_address, vm.private_ip_address,flavor,vm.state
             else
               env.ui.info "Name: #{name}"
               env.ui.info "Instance Id: #{vm.id}"
