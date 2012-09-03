@@ -19,7 +19,7 @@ module Mccloud::Provider
           if name.start_with?(self.filter)
             unless self.filter==""
               name[self.filter]=""
-              flavor = (vm.flavor == nil) ? 'm1.medium' : vm.flavor.name
+              flavor = (vm.flavor == nil) ? 'not fog supported (m1.medium?)' : vm.flavor.name
               printf "%-10s %-12s %-20s %-20s %-15s %-8s\n",name,vm.id, vm.public_ip_address, vm.private_ip_address,flavor,vm.state
             else
               env.ui.info "Name: #{name}"
